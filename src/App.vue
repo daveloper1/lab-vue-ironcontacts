@@ -1,43 +1,19 @@
 <template>
   <div>
-    <table>
-      <tr>
-        <th>Picture</th>
-        <th>Name</th>
-        <th>Popularity</th>
-      </tr>
-      <tr v-for="contact in getContacts" :key="contact.id">
-        <td>
-          <img
-            class="contact-image"
-            :src="`${contact.pictureUrl}`"
-            alt="Contact Image"
-          />
-        </td>
-        <td>{{ contact.name }}</td>
-        <td>{{ contact.popularity }}</td>
-      </tr>
-    </table>
+    <NavBar />
+    <ContactsList/>
   </div>
 </template>
 
 <script>
 import { computed } from "@vue/runtime-core";
 import contactsData from "../src/contacts.json";
+import ContactsList from "./components/ContactsList.vue";
+import NavBar from "./components/NavBar.vue";
 export default {
   name: "App",
-  components: {},
-  data() {
-    return {
-      contacts: contactsData,
-    };
-  },
-  computed: {
-    getContacts() {
-      const nElements = 5;
-      return this.contacts.slice(0, nElements);
-    },
-  },
+  components: { ContactsList: ContactsList, NavBar: NavBar },
+  
 };
 </script>
 
